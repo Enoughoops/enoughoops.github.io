@@ -154,7 +154,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                2
+                3
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -207,6 +207,133 @@
 
             
             <section id="main">
+    <article id="post-ICARUS动刀记录" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/09/ICARUS动刀记录/">ICARUS动刀记录</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/09/ICARUS动刀记录/">
+            <time datetime="2017-10-09T07:22:18.000Z" itemprop="datePublished">2017-10-09</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Navi栏上站点Logo的更换"><a href="#Navi栏上站点Logo的更换" class="headerlink" title="Navi栏上站点Logo的更换"></a>Navi栏上站点Logo的更换</h2><p>选择一件趁手的文本编辑器打开 blog/themes/icarus 下的_config.yml，<br>修改Customize&gt;logo&gt;url 为 你悉心挑选的Logo图的路径（<del>理所当然，它应该早早地就被你放置在那儿了</del>）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">customize:</div><div class="line">    logo:</div><div class="line">        enabled: true</div><div class="line">        width: 40</div><div class="line">        height: 40</div><div class="line">        url: images/logo.png // 全路径是 blog/public/css/images／logo.png</div></pre></td></tr></table></figure>
+<h2 id="Footer上版权信息大定制"><a href="#Footer上版权信息大定制" class="headerlink" title="Footer上版权信息大定制"></a>Footer上版权信息大定制</h2><p>我知道的，有时候占有欲爆炸的你连 <code>Powered by Hexo. Theme by PPOffice</code> 都不愿意放过。</p>
+<p>ICARUS的这行字藏匿在模版 /blog/themes/icarus/layout/common/footer.ejs 之中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;footer id=&quot;footer&quot;&gt;</div><div class="line">    &lt;div class=&quot;outer&quot;&gt;</div><div class="line">        &lt;div id=&quot;footer-info&quot; class=&quot;inner&quot;&gt;</div><div class="line">            &amp;copy; &lt;%= date(new Date(), &apos;YYYY&apos;) %&gt; &lt;%= config.author || config.title %&gt;&lt;br&gt;</div><div class="line">            Powered by &lt;a href=&quot;https://github.com/enoughoops/&quot; target=&quot;_blank&quot;&gt;Battery&lt;/a&gt;.</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/footer&gt;</div></pre></td></tr></table></figure>
+<p>站在版权保护的角度，修改它毫无疑问处于不被推荐的行为列表里。<br>动手前，务必斗争一番。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/10/09/ICARUS动刀记录/" data-id="cj8jus2g300014vyg9zuep5h8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/10/09/ICARUS动刀记录/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/10/09/ICARUS动刀记录/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Hexo配置通径" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -260,7 +387,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/31/Hexo配置通径/" data-id="cj706644q0000dnygd4syxklk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/31/Hexo配置通径/" data-id="cj8jus2fx00004vygq7nwyycu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -390,7 +517,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/31/hello-world/" data-id="cj70664530001dnyg2t26c2od" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/31/hello-world/" data-id="cj8jus2g600024vygai5xdoy0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -481,6 +608,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/10/09/ICARUS动刀记录/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/09/ICARUS动刀记录/" class="title">ICARUS动刀记录</a></p>
+                            <p class="item-date"><time datetime="2017-10-09T07:22:18.000Z" itemprop="datePublished">2017-10-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/08/31/Hexo配置通径/" class="thumbnail">
     
     
@@ -527,7 +673,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
