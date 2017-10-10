@@ -3,15 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Archive: 2017/8 | Enough‘s Cold</title>
+    <title>Hexo配置通径其二 | Enough‘s Cold</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Enough‘s Cold">
-<meta property="og:url" content="http://yoursite.com/archives/2017/08/index.html">
+    <meta name="description" content="心情不好，换个Theme先以现在正服役的这款ICARUS为砖：  首先,将ICARUS克隆到blog/themes/icarus路径下:  git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus  接着修改/blog下的_config.yml，钦定ICARUS为现役主题  1234# Extensions#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo配置通径其二">
+<meta property="og:url" content="http://yoursite.com/2017/10/10/Hexo配置通径其二/index.html">
 <meta property="og:site_name" content="Enough‘s Cold">
+<meta property="og:description" content="心情不好，换个Theme先以现在正服役的这款ICARUS为砖：  首先,将ICARUS克隆到blog/themes/icarus路径下:  git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus  接着修改/blog下的_config.yml，钦定ICARUS为现役主题  1234# Extensions#">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-10-10T08:47:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Enough‘s Cold">
+<meta name="twitter:title" content="Hexo配置通径其二">
+<meta name="twitter:description" content="心情不好，换个Theme先以现在正服役的这款ICARUS为砖：  首先,将ICARUS克隆到blog/themes/icarus路径下:  git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus  接着修改/blog下的_config.yml，钦定ICARUS为现役主题  1234# Extensions#">
     
 
     
@@ -206,66 +210,166 @@
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2017</h1>
-            </div>
+            <section id="main"><article id="post-Hexo配置通径其二" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/08/31/Hexo配置通径/">Hexo配置通径</a>
+        <h1 class="article-title" itemprop="name">
+            Hexo配置通径其二
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/08/31/Hexo配置通径/">
-            <time datetime="2017-08-31T07:57:53.000Z" itemprop="datePublished">2017-08-31</time>
+        <a href="/2017/10/10/Hexo配置通径其二/">
+            <time datetime="2017-10-10T08:37:37.000Z" itemprop="datePublished">2017-10-10</time>
         </a>
     </div>
 
 
-                    
-                    
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                        
+                        
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/08/31/hello-world/">Hello World</a>
-        </h1>
-    
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="心情不好，换个Theme"><a href="#心情不好，换个Theme" class="headerlink" title="心情不好，换个Theme"></a>心情不好，换个Theme</h2><p>先以现在正服役的这款ICARUS为砖：</p>
+<ul>
+<li>首先,将ICARUS克隆到blog/themes/icarus路径下:</li>
+</ul>
+<p><code>git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</code></p>
+<ul>
+<li>接着修改/blog下的_config.yml，钦定ICARUS为现役主题</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: icarus</div></pre></td></tr></table></figure>
+<ul>
+<li>最后将/blog/themes/icarus/下的_config.yml.example 命名为 _config.yml，命令行里敲下 <code>$hexo server</code>在本地审视一番吧。</li>
+</ul>
+<h2 id="源源不断流泻出的才华转换成一篇新的Blog"><a href="#源源不断流泻出的才华转换成一篇新的Blog" class="headerlink" title="源源不断流泻出的才华转换成一篇新的Blog"></a>源源不断流泻出的才华转换成一篇新的Blog</h2><ul>
+<li>先发个指令  <code>$ hexo new &#39;文章化的才华&#39;</code> 指定一下新文章的名称。Hexo会在/blog/source/_posts下生成对应的 <em>文章化的才华.md</em> 的markdown文件。</li>
+</ul>
+<ul>
+<li>把你准备好的md格式的文章搬进去，重新部署<br><code>$ hexo generate &amp;&amp; hexo deploy</code><br>发布的流程于此优雅结束</li>
+</ul>
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/31/hello-world/">
-            <time datetime="2017-08-31T02:32:01.000Z" itemprop="datePublished">2017-08-31</time>
-        </a>
-    </div>
-
-
-                    
-                    
-                </div>
-            </div>
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://yoursite.com/2017/10/10/Hexo配置通径其二/" data-id="cj8ld8r6m0001hfygzdcr4piz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/10/10/Hexo配置通径其二/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/10/10/Hexo配置通径其二/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/10/09/ICARUS动刀记录/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">ICARUS动刀记录</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
 </section>
             
                 
@@ -403,11 +507,13 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = '';
+            this.page.url = 'http://yoursite.com/2017/10/10/Hexo配置通径其二/';
+        
+        this.page.identifier = 'Hexo配置通径其二';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
