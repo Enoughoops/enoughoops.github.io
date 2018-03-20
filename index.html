@@ -245,9 +245,7 @@
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> #import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">@interface UIViewController(BNRSnapshot)</div><div class="line"></div><div class="line">@property (nonatomic, strong) UIView *snapshot;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
 <p>2.实现文件导入运行时头文件，用AssocidObject(关联引用)实现读取方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#import &quot;UIViewController+BNRSnapshot.h&quot;</div><div class="line">#import &lt;objc/runtime.h&gt;</div><div class="line"></div><div class="line">@implementation UIViewController(BNRSnapshot)</div><div class="line"></div><div class="line">- (UIView *)snapshot &#123;</div><div class="line">    </div><div class="line">    UIView *view = objc_getAssociatedObject(self, @selector(snapshot));</div><div class="line">    if (!view) &#123;</div><div class="line">        view = [self.navigationController.view snapshotViewAfterScreenUpdates:NO];</div><div class="line">        [self setSnapshot:view];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return view;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)setSnapshot: (UIView *)snapshot &#123;</div><div class="line">    </div><div class="line">    objc_setAssociatedObject(self, @selector(snapshot), snapshot, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<ol>
-<li>以(objc_setAssociatedObject:)为例，它的四个参数代表了为对象object添加键值为snapshot值为snapshot的关联引用，同时关联策略为OBJC_ASSOCIATION_RETAIN_NONATOMIC，这个策略的含义类似于属性的存储关键字(strong,nonatomatic)。</li>
-</ol>
+<p>3.以(objc_setAssociatedObject:)为例，它的四个参数代表了为对象object添加键值为snapshot值为snapshot的关联引用，同时关联策略为OBJC_ASSOCIATION_RETAIN_NONATOMIC，这个策略的含义类似于属性的存储关键字(strong,nonatomatic)。</p>
 
         
         </div>
@@ -258,7 +256,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/03/20/OC笔记-在Category中添加属性/" data-id="cjezosq4r0003r3ygu5vsz6xj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/03/20/OC笔记-在Category中添加属性/" data-id="cjezox2ua0002yiygct4b983n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -393,7 +391,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/10/Hexo配置通径其二/" data-id="cjezosq4f0001r3yg5tpw24ln" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/10/Hexo配置通径其二/" data-id="cjezox2tv0000yiyg6zl19uyy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -520,7 +518,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/09/ICARUS动刀记录/" data-id="cjezosq4l0002r3ygauf3t00a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/09/ICARUS动刀记录/" data-id="cjezox2u40001yiygng0ze766" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -643,7 +641,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/31/Hexo配置通径/" data-id="cjezosq430000r3yg9lt73jhb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/31/Hexo配置通径/" data-id="cjezox2ug0003yiygne5hn7hj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Enough‘s Cold">
 <meta property="og:description" content="通常我们使用范畴(Categeory)来为已有的类添加方法。其实，在Category中亦可为其添加属性，只是无法自动创建读取方法。为了克服这点困难，我们需要借助runtime手动实现getter/setter。 1.范畴的头文件添加一个属性  1234567 #import &amp;lt;UIKit/UIKit.h&amp;gt;@interface UIViewController(BNRSnapshot)@">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-20T13:18:15.258Z">
+<meta property="og:updated_time" content="2018-03-20T13:23:47.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC纪--&gt;在Category中添加属性">
 <meta name="twitter:description" content="通常我们使用范畴(Categeory)来为已有的类添加方法。其实，在Category中亦可为其添加属性，只是无法自动创建读取方法。为了克服这点困难，我们需要借助runtime手动实现getter/setter。 1.范畴的头文件添加一个属性  1234567 #import &amp;lt;UIKit/UIKit.h&amp;gt;@interface UIViewController(BNRSnapshot)@">
@@ -248,9 +248,7 @@
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> #import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">@interface UIViewController(BNRSnapshot)</div><div class="line"></div><div class="line">@property (nonatomic, strong) UIView *snapshot;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
 <p>2.实现文件导入运行时头文件，用AssocidObject(关联引用)实现读取方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#import &quot;UIViewController+BNRSnapshot.h&quot;</div><div class="line">#import &lt;objc/runtime.h&gt;</div><div class="line"></div><div class="line">@implementation UIViewController(BNRSnapshot)</div><div class="line"></div><div class="line">- (UIView *)snapshot &#123;</div><div class="line">    </div><div class="line">    UIView *view = objc_getAssociatedObject(self, @selector(snapshot));</div><div class="line">    if (!view) &#123;</div><div class="line">        view = [self.navigationController.view snapshotViewAfterScreenUpdates:NO];</div><div class="line">        [self setSnapshot:view];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return view;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)setSnapshot: (UIView *)snapshot &#123;</div><div class="line">    </div><div class="line">    objc_setAssociatedObject(self, @selector(snapshot), snapshot, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<ol>
-<li>以(objc_setAssociatedObject:)为例，它的四个参数代表了为对象object添加键值为snapshot值为snapshot的关联引用，同时关联策略为OBJC_ASSOCIATION_RETAIN_NONATOMIC，这个策略的含义类似于属性的存储关键字(strong,nonatomatic)。</li>
-</ol>
+<p>3.以(objc_setAssociatedObject:)为例，它的四个参数代表了为对象object添加键值为snapshot值为snapshot的关联引用，同时关联策略为OBJC_ASSOCIATION_RETAIN_NONATOMIC，这个策略的含义类似于属性的存储关键字(strong,nonatomatic)。</p>
 
         
         </div>
@@ -261,7 +259,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/03/20/OC笔记-在Category中添加属性/" data-id="cjezosq4r0003r3ygu5vsz6xj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/03/20/OC笔记-在Category中添加属性/" data-id="cjezox2ua0002yiygct4b983n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
