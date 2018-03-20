@@ -154,7 +154,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
+                4
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -207,6 +207,135 @@
 
             
             <section id="main">
+    <article id="post-OC笔记-在Category中添加属性" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/03/20/OC笔记-在Category中添加属性/">OC纪--&gt;在Category中添加属性</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/03/20/OC笔记-在Category中添加属性/">
+            <time datetime="2018-03-20T13:10:48.000Z" itemprop="datePublished">2018-03-20</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>通常我们使用范畴(Categeory)来为已有的类添加方法。其实，在Category中亦可为其添加属性，只是无法自动创建读取方法。为了克服这点困难，我们需要借助runtime手动实现getter/setter。</p>
+<p>1.范畴的头文件添加一个属性</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> #import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">@interface UIViewController(BNRSnapshot)</div><div class="line"></div><div class="line">@property (nonatomic, strong) UIView *snapshot;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>2.实现文件导入运行时头文件，用AssocidObject(关联引用)实现读取方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#import &quot;UIViewController+BNRSnapshot.h&quot;</div><div class="line">#import &lt;objc/runtime.h&gt;</div><div class="line"></div><div class="line">@implementation UIViewController(BNRSnapshot)</div><div class="line"></div><div class="line">- (UIView *)snapshot &#123;</div><div class="line">    </div><div class="line">    UIView *view = objc_getAssociatedObject(self, @selector(snapshot));</div><div class="line">    if (!view) &#123;</div><div class="line">        view = [self.navigationController.view snapshotViewAfterScreenUpdates:NO];</div><div class="line">        [self setSnapshot:view];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return view;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)setSnapshot: (UIView *)snapshot &#123;</div><div class="line">    </div><div class="line">    objc_setAssociatedObject(self, @selector(snapshot), snapshot, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<ol>
+<li>以(objc_setAssociatedObject:)为例，它的四个参数代表了为对象object添加键值为snapshot值为snapshot的关联引用，同时关联策略为OBJC_ASSOCIATION_RETAIN_NONATOMIC，这个策略的含义类似于属性的存储关键字(strong,nonatomatic)。</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/03/20/OC笔记-在Category中添加属性/" data-id="cjezosq4r0003r3ygu5vsz6xj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2018/03/20/OC笔记-在Category中添加属性/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2018/03/20/OC笔记-在Category中添加属性/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Hexo配置通径其二" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -264,7 +393,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/10/Hexo配置通径其二/" data-id="cj8le0lti0002fuygnkebr632" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/10/Hexo配置通径其二/" data-id="cjezosq4f0001r3yg5tpw24ln" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -391,7 +520,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/10/09/ICARUS动刀记录/" data-id="cj8le0ls60001fuygjobq5wca" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/10/09/ICARUS动刀记录/" data-id="cjezosq4l0002r3ygauf3t00a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -514,7 +643,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/31/Hexo配置通径/" data-id="cj8le0ls00000fuygd827iz8x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2017/08/31/Hexo配置通径/" data-id="cjezosq430000r3yg9lt73jhb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -605,6 +734,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/03/20/OC笔记-在Category中添加属性/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/03/20/OC笔记-在Category中添加属性/" class="title">OC纪--&gt;在Category中添加属性</a></p>
+                            <p class="item-date"><time datetime="2018-03-20T13:10:48.000Z" itemprop="datePublished">2018-03-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/10/10/Hexo配置通径其二/" class="thumbnail">
     
     
@@ -670,7 +818,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -699,7 +847,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 Enoughoops<br>
+            &copy; 2018 Enoughoops<br>
             Powered by <a href="https://github.com/enoughoops/" target="_blank">Battery</a>.
         </div>
     </div>
